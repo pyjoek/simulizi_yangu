@@ -3,7 +3,9 @@ import './App.css';
 function App() {
   return (
     <div>
-      <h1>hello worlds</h1>
+      <center>
+        Initializing...
+        </center>
     </div>
   );
 }

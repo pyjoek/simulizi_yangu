@@ -8,10 +8,10 @@ services:
       - db
     environment:
       - DB_HOST=db
-      - DB_PORT=5432
-      - DB_USER=postgres
-      - DB_PASSWORD=postpass
-      - DN_NAME=storiesdb
+      - DB_PORT=3306
+      - DB_USER=rapha
+      - DB_PASSWORD=rapha123
+      - DB_NAME=storiesdb
     restart: always
 
   frontend:
@@ -23,14 +23,22 @@ services:
     restart: always
 
   db:
-    image: postgres:15
+    image: mysql:8.0
     restart: always
+    ports:
+       - "3306:3306"
     environment:
-      POSTGRES_DB: storiesdb
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postpass
-    volumes: 
-      - pgdata:/var/lib/postgresql/data
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: storiesdb
+      MYSQL_USER: rapha
+      MYSQL_PASSWORD: rapha123
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
 volumes:
-  pgdata:
+  mysql_data:

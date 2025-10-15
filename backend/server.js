@@ -28,6 +28,7 @@ async function initDB() {
         id INT AUTO_INCREMENT PRIMARY KEY,
         title VARCHAR(255) NOT NULL,
         image TEXT,
+        category VARCHAR(100),
         content TEXT
       );
     `);
@@ -39,10 +40,11 @@ async function initDB() {
     if (count === 0) {
       console.log("Seeding database...");
       await connection.query(`
-        INSERT INTO stories (title, image, content) VALUES 
-        ('First Story', 'https://via.placeholder.com/150', 'This is the first story'),
-        ('Second Story', 'https://via.placeholder.com/150', 'This is the second story');
+        INSERT INTO stories (title, image, category,  content) VALUES 
+        ('First Story', 'https://via.placeholder.com/150', 'family', 'This is the first story'),
+        ('Second Story', 'https://via.placeholder.com/150', 'adults', 'This is the second story');
       `);
+      console.log('Done Seeding...')
     }
   } catch (err) {
     console.error('Error initializing database:', err);

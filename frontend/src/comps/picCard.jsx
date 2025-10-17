@@ -1,7 +1,7 @@
 function PicCard ({Img}) {
     return (
         <div>
-            <img src={Img} />
+            <img src={Img} alt="pic" width="150" />
         </div>
     )
 }

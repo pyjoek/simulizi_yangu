@@ -1,7 +1,7 @@
 function StoryPart ({Title, Story}) {
     return (
         <div>
-            <h1>{Title}</h1>
+            <h3>{Title}</h3>
             <textarea>{Story}</textarea>
         </div>
     )

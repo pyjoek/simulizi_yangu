@@ -5,7 +5,6 @@ function App() {
   return (
     <div>
       <center>
-        Initializing...
         <Testing />
         </center>
     </div>

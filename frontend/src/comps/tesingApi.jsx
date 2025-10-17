@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import StoryPart from './StoryPart';
 
 function App() {
   const [stories, setStories] = useState([]);
@@ -15,9 +16,7 @@ function App() {
       <h1>Stories</h1>
       {stories.map((story) => (
         <div key={story.id}>
-          <h2>{story.title}</h2>
-          <img src={story.image} alt={story.title} width="150" />
-          <p>{story.content}</p>
+          <StoryPart Img={story.image} Title={story.title} Story={story.content}/>
         </div>
       ))}
     </div>

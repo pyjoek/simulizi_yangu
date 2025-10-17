@@ -13,12 +13,23 @@ function App() {
 
   return (
     <div>
-      <h1>Stories</h1>
-      {stories.map((story) => (
-        <div key={story.id}>
-          <StoryPart Img={story.image} Title={story.title} Story={story.content}/>
-        </div>
-      ))}
+      <div className='row'>
+        <h1>Stories</h1>
+        <p className='row'>
+          {stories.map((story) => (
+            <div key={story.id}>
+              {story.category}
+            </div>
+          ))}
+        </p>
+      </div>
+      <div className='row'>
+        {stories.map((story) => (
+          <div key={story.id} className='col-lg-3'>
+            <StoryPart Img={story.image} Title={story.title} Story={story.content}/>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

@@ -60,11 +60,33 @@ app.get('/api/stories', async (req, res) => {
   try {
     const [rows] = await pool.query('SELECT * FROM stories;');
     res.json(rows);
+    // res.json(rows[0]['category']);
   } catch (err) {
     console.error(err);
     res.status(500).send('Server error');
   }
 });
+
+// Add new stories
+app.post('/api/new', async (req, res) => {
+  const data = req.body;
+  console.log(data)
+
+  res.status(200).json({
+    message: "Succesfully"
+  })
+
+  try {
+      const [row] = await pool.query(`
+          INSERT INTO stories (title, image, category,  content) VALUES 
+          ('First Story', 'https://via.placeholder.com/150', 'family', 'This is the first story'),
+          ('Second Story', 'https://via.placeholder.com/150', 'adults', 'This is the second story');
+      `)
+  } catch (err) {
+      console.error(err)
+      res.status(500).send('Server error')
+  }
+})
 
 app.listen(PORT, () => {
   console.log(`Backend running at http://localhost:${PORT}`);

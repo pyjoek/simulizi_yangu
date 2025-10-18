@@ -1,4 +1,3 @@
-// components/AddStory.js
 import { useState } from 'react';
 
 function AddStory({ onAdd }) {
@@ -11,20 +10,20 @@ function AddStory({ onAdd }) {
     e.preventDefault();
 
     const newStory = { title, content, image, category };
-
+    
     try {
-      const res = await fetch('http://localhost:5000/api/stories', {
+      const res = await fetch('http://localhost:5000/api/newStory', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(newStory),
       });
-
+      
       if (!res.ok) throw new Error('Failed to add story');
-
+      
       const savedStory = await res.json();
-      onAdd(savedStory);  // Notify parent component
+      onAdd(savedStory); 
       setTitle('');
       setContent('');
       setImage('');

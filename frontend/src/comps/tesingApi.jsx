@@ -43,10 +43,9 @@
 
 
 import { useEffect, useState } from 'react';
-import StoryPart from './StoryPart';
 import Adult from './category/adult';
 import Family from './category/family';
-import AddStory from './components/AddStory'; // ✅ Import AddStory
+import AddStory from './AddStory.js';
 
 function App() {
   const [stories, setStories] = useState([]);

@@ -68,25 +68,31 @@ app.get('/api/stories', async (req, res) => {
 });
 
 // Add new stories
-app.post('/api/new', async (req, res) => {
-  const data = req.body;
-  console.log(data)
+app.post('/api/newStory', async (req, res) => {
+  const { title, image, category, content } = req.body;  // Destructure the incoming data
 
-  res.status(200).json({
-    message: "Succesfully"
-  })
+  console.log('Received data:', { title, image, category, content });
+
+  // Check if all fields are provided
+  if (!title || !image || !category || !content) {
+    return res.status(400).json({ message: 'All fields are required' });
+  }
 
   try {
-      const [row] = await pool.query(`
-          INSERT INTO stories (title, image, category,  content) VALUES 
-          ('First Story', 'https://via.placeholder.com/150', 'family', 'This is the first story'),
-          ('Second Story', 'https://via.placeholder.com/150', 'adults', 'This is the second story');
-      `)
+    // Insert data into the database (adjust query based on your actual DB and schema)
+    const [row] = await pool.query(`
+      INSERT INTO stories (title, image, category, content) 
+      VALUES (?, ?, ?, ?);
+    `, [title, image, category, content]);
+
+    // Return success response with inserted data (or just a success message)
+    res.status(201).json({ message: 'Story added successfully', story: { title, image, category, content } });
+
   } catch (err) {
-      console.error(err)
-      res.status(500).send('Server error')
+    console.error('Database error:', err);
+    res.status(500).json({ message: 'Server error while adding story' });
   }
-})
+});
 
 app.listen(PORT, () => {
   console.log(`Backend running at http://localhost:${PORT}`);

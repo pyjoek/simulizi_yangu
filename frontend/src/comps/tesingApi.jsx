@@ -70,16 +70,18 @@ function App() {
 
   return (
     <div className="container">
-      <div className="row">
-        <h1>Stories</h1>
-        <div>
-          <button onClick={() => setCategory('family')}>Family</button>
-          <button onClick={() => setCategory('adults')}>Adult</button>
+      <div className="row justify-content-center text-center mb-3 mt-4">
+        <div className="col-12 d-flex flex-column flex-md-row justify-content-center align-items-center">
+          <h1 className="mr-md-5 mb-3 mb-md-0">Stories</h1>
+          <div className="d-flex gap-2">
+            <button onClick={() => setCategory('family')} className="btn btn-primary mr-2">Family</button>
+            <button onClick={() => setCategory('adults')} className="btn btn-secondary mr-2">Adult</button>
+          </div>
+          <button className="btn btn-secondary ml-5">Adult</button>
         </div>
       </div>
 
-      {/* ✅ Add New Story Form */}
-      <AddStory onAdd={handleAddStory} />
+      {/* <AddStory onAdd={handleAddStory} /> */}
 
       <div className="row">
         {category === 'family' ? (

@@ -16,19 +16,26 @@ function App() {
   const handleShow = () => setShowModal(true);
   const handleClose = () => setShowModal(false);
 
+  const handleImageUpload = (e) => {
+    setImage(e.target.files[0]); // Store the selected file
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const newStory = { title, content, image, category };
-    console.log(newStory)
+    // const newStory = { title, content, image, category };
+    // console.log(newStory)
+
+    const formData = new FormData();
+    formData.append('image', image); // Attach image file to FormData
+    formData.append('title', title);
+    formData.append('content', content);
+    formData.append('category', category);
     
     try {
       const res = await fetch('http://localhost:5000/api/newStory', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(newStory),
+        body: JSON.stringify(formData),
       });
       
       if (!res.ok) throw new Error('Failed to add story');
@@ -37,7 +44,7 @@ function App() {
       // onAdd(savedStory); 
       setTitle('');
       setContent('');
-      setImage('');
+      setImage(null);
       setCategory('family');
     } catch (err) {
       console.error(err);
@@ -99,19 +106,18 @@ function App() {
                     />
                   </div>
                   <div className="form-group">
-                    <label htmlFor="image" className="col-form-label">Image URL:</label>
+                    <label htmlFor="image">Upload Image:</label>
                     <input
-                      type="text"
-                      className="form-control"
+                      type="file"
                       id="image"
-                      value={image}
-                      onChange={(e) => setImage(e.target.value)}
+                      className="form-control"
+                      onChange={handleImageUpload}
                     />
                   </div>
                   <div className="form-group">
                     <label htmlFor="category" className="col-form-label">Category:</label>
                     <select
-                      className="form-select"
+                      className="form-control"
                       id="category"
                       value={category}
                       onChange={(e) => setCategory(e.target.value)}

@@ -8,10 +8,41 @@ function App() {
   const [category, setCategory] = useState('family');
   const [showAddStoryModal, setShowAddStoryModal] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+  const [image, setImage] = useState('');
   
   // Toggle modal visibility
   const handleShow = () => setShowModal(true);
   const handleClose = () => setShowModal(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const newStory = { title, content, image, category };
+    console.log(newStory)
+    
+    try {
+      const res = await fetch('http://localhost:5000/api/newStory', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newStory),
+      });
+      
+      if (!res.ok) throw new Error('Failed to add story');
+      
+      // const savedStory = await res.json();
+      // onAdd(savedStory); 
+      setTitle('');
+      setContent('');
+      setImage('');
+      setCategory('family');
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   useEffect(() => {
     fetchStories();
@@ -45,31 +76,56 @@ function App() {
                 </button>
               </div>
               <div className="modal-body">
-                <form>
+                <form onSubmit={handleSubmit}>
                   <div className="form-group">
                     <label htmlFor="title" className="col-form-label">Title:</label>
-                    <input type="text" className="form-control" id="title" />
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="title"
+                      value={title}
+                      onChange={(e) => setTitle(e.target.value)}
+                      required
+                    />
                   </div>
                   <div className="form-group">
                     <label htmlFor="content" className="col-form-label">Content:</label>
-                    <textarea className="form-control" id="content"></textarea>
+                    <textarea
+                      className="form-control"
+                      id="content"
+                      value={content}
+                      onChange={(e) => setContent(e.target.value)}
+                      required
+                    />
                   </div>
                   <div className="form-group">
                     <label htmlFor="image" className="col-form-label">Image URL:</label>
-                    <input type="text" className="form-control" id="image" />
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="image"
+                      value={image}
+                      onChange={(e) => setImage(e.target.value)}
+                    />
                   </div>
                   <div className="form-group">
                     <label htmlFor="category" className="col-form-label">Category:</label>
-                    <select className="form-select" id="category">
+                    <select
+                      className="form-select"
+                      id="category"
+                      value={category}
+                      onChange={(e) => setCategory(e.target.value)}
+                    >
                       <option value="family">Family</option>
                       <option value="adults">Adult</option>
                     </select>
                   </div>
+                  <div className="modal-footer">
+                    <button type="button" className="btn btn-secondary" onClick={handleClose}>Close</button>
+                    <button type="submit" className="btn btn-primary">Save Story</button>
+                  </div>
                 </form>
-              </div>
-              <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" onClick={handleClose}>Close</button>
-                <button type="button" className="btn btn-primary">Save Story</button>
+
               </div>
             </div>
           </div>
@@ -80,7 +136,7 @@ function App() {
         <div className="col-12 d-flex flex-column flex-md-row justify-content-center align-items-center">
           <h1 className="mr-md-5 mb-3 mb-md-0">Stories</h1>
           <div className="d-flex gap-2">
-            <button onClick={() => setCategory('family')} className="btn btn-primary mr-2">Family</button>
+            <button onClick={() => setCategory('family')} className="btn btn-secondary mr-2">Family</button>
             <button onClick={() => setCategory('adults')} className="btn btn-secondary mr-2">Adult</button>
           </div>
             <button type="button" className="btn btn-primary ml-3" onClick={handleShow}>Add New Story</button>

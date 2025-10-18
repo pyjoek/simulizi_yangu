@@ -69,8 +69,7 @@ app.get('/api/stories', async (req, res) => {
 
 // Add new stories
 app.post('/api/newStory', async (req, res) => {
-  const { title, image, category, content } = req.body;  // Destructure the incoming data
-
+  const { title, image, category, content } = req.body;  
   console.log('Received data:', { title, image, category, content });
 
   // Check if all fields are provided

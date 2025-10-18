@@ -47,6 +47,16 @@ class StoryController extends Controller
 
         return response()->json(['message' => 'File upload failed'], 400);
     }
+
+    public function index()
+    {
+        // Fetch all stories from the database
+        $stories = Story::all();
+
+        // Return stories as JSON with the file URL
+        return response()->json($stories);
+    }
+
 }
 
 // php artisan storage:link

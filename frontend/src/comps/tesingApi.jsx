@@ -9,9 +9,9 @@ function App() {
   const [showAddStoryModal, setShowAddStoryModal] = useState(false);
   const [showModal, setShowModal] = useState(false);
   
-    // Toggle modal visibility
-    const handleShow = () => setShowModal(true);
-    const handleClose = () => setShowModal(false);
+  // Toggle modal visibility
+  const handleShow = () => setShowModal(true);
+  const handleClose = () => setShowModal(false);
 
   useEffect(() => {
     fetchStories();

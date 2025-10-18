@@ -1,4 +1,4 @@
-import StoryPart from "../StoryPart";
+// import StoryPart from "../StoryPart";
 
 // Adult Component
 const Adult = ({ stories }) => {
@@ -6,7 +6,9 @@ const Adult = ({ stories }) => {
     <div className='row'>
       {stories.map(story => (
         <div key={story.id} className='col-lg-3'>
-          <StoryPart Img={story.image} Title={story.title} Story={story.content} />
+          <h1>{story.title}</h1>
+          <img src={story.imgage} alt={story.title} />
+          {/* <StoryPart Img={story.image} Title={story.title} Story={story.content} /> */}
         </div>
       ))}
     </div>

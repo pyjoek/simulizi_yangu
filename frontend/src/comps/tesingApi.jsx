@@ -56,7 +56,7 @@ function App() {
   }, []);
 
   const fetchStories = () => {
-    fetch('http://localhost:5000/api/stories')
+    fetch('http://localhost:8000/api/stories')
       .then(res => res.json())
       .then(data => setStories(data))
       .catch(err => console.error(err));

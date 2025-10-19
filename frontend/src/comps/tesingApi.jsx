@@ -35,7 +35,7 @@ function App() {
     try {
       const res = await fetch('http://localhost:8000/api/newStory', {
         method: 'POST',
-        body: JSON.stringify(formData),
+        body: formData
       });
       
       if (!res.ok) throw new Error('Failed to add story');
@@ -70,7 +70,7 @@ function App() {
   const filteredStories = stories.filter(story => story.category === category);
 
   return (
-    <div className="container">
+    <div className='ml-4 mr-4'>
        {/* Modal component */}
       {showModal && (
         <div className="modal fade show" style={{ display: 'block' }} tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="false">
@@ -150,14 +150,13 @@ function App() {
             <button onClick={() => setCategory('adult')} className="btn btn-transparent text-dark border-0" style={{ backgroundColor: 'transparent' }}><b>Poetry</b></button>
           </div>
             <button type="button" className="btn btn-primary ml-3" onClick={handleShow}>Add New Story</button>
-
         </div>
       </div>
 
       {/* Show AddStory modal/form if showAddStoryModal is true */}
       {showAddStoryModal && <AddStory onAdd={handleAddStory} />}
 
-      <div className="row">
+      <div className="row container mt-5">
         {category === 'family' ? (
           <Family stories={filteredStories} />
         ) : (

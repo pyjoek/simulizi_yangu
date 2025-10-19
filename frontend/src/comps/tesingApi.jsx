@@ -33,7 +33,7 @@ function App() {
     formData.append('category', category);
     
     try {
-      const res = await fetch('http://localhost:5000/api/newStory', {
+      const res = await fetch('http://localhost:8000/api/newStory', {
         method: 'POST',
         body: JSON.stringify(formData),
       });
@@ -142,8 +142,12 @@ function App() {
         <div className="col-12 d-flex flex-column flex-md-row justify-content-center align-items-center">
           <h1 className="mr-md-5 mb-3 mb-md-0">Stories</h1>
           <div className="d-flex gap-2">
-            <button onClick={() => setCategory('family')} className="btn btn-secondary mr-2">Family</button>
-            <button onClick={() => setCategory('adults')} className="btn btn-secondary mr-2">Adult</button>
+            <button onClick={() => setCategory('family')} className="btn btn-transparent text-dark border-0" style={{ backgroundColor: 'transparent' }}><b>Science Fiction</b></button>
+            <button onClick={() => setCategory('adult')} className="btn btn-transparent text-dark border-0" style={{ backgroundColor: 'transparent' }}><b>Romance</b></button>
+            <button onClick={() => setCategory('family')} className="btn btn-transparent text-dark border-0" style={{ backgroundColor: 'transparent' }}><b>Comedy</b></button>
+            <button onClick={() => setCategory('adult')} className="btn btn-transparent text-dark border-0" style={{ backgroundColor: 'transparent' }}><b>Thriller</b></button>
+            <button onClick={() => setCategory('family')} className="btn btn-transparent text-dark border-0" style={{ backgroundColor: 'transparent' }}><b>Fantasy</b></button>
+            <button onClick={() => setCategory('adult')} className="btn btn-transparent text-dark border-0" style={{ backgroundColor: 'transparent' }}><b>Poetry</b></button>
           </div>
             <button type="button" className="btn btn-primary ml-3" onClick={handleShow}>Add New Story</button>
 

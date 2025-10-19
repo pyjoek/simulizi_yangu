@@ -22,3 +22,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::get('/stories', [StoryController::class, 'index']);
+Route::post('/newStory', [StoryController::class, 'uploadImage']);

@@ -12,22 +12,17 @@ function App() {
   const [content, setContent] = useState('');
   const [image, setImage] = useState('');
   
-  // Toggle modal visibility
   const handleShow = () => setShowModal(true);
   const handleClose = () => setShowModal(false);
 
   const handleImageUpload = (e) => {
-    setImage(e.target.files[0]); // Store the selected file
+    setImage(e.target.files[0]);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // const newStory = { title, content, image, category };
-    // console.log(newStory)
-
     const formData = new FormData();
-    formData.append('image', image); // Attach image file to FormData
+    formData.append('image', image);
     formData.append('title', title);
     formData.append('content', content);
     formData.append('category', category);
@@ -40,8 +35,6 @@ function App() {
       
       if (!res.ok) throw new Error('Failed to add story');
       
-      // const savedStory = await res.json();
-      // onAdd(savedStory); 
       setTitle('');
       setContent('');
       setImage(null);
@@ -64,14 +57,15 @@ function App() {
 
   const handleAddStory = (newStory) => {
     setStories(prev => [...prev, newStory]);
-    setShowAddStoryModal(false); // Close the modal after adding a story
+    setShowAddStoryModal(false);
   };
 
   const filteredStories = stories.filter(story => story.category === category);
 
   return (
     <div className='ml-4 mr-4'>
-       {/* Modal component */}
+      
+      {/* Modal component */}
       {showModal && (
         <div className="modal fade show" style={{ display: 'block' }} tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="false">
           <div className="modal-dialog" role="document">
@@ -136,14 +130,14 @@ function App() {
                     <button type="submit" className="btn btn-primary">Save Story</button>
                   </div>
                 </form>
-
               </div>
             </div>
           </div>
         </div>
       )}
 
-      <div className="row justify-content-center text-center mb-3 mt-4">
+      {/* Navigation Bar (with different background color) */}
+      <div className="row justify-content-center text-center mb-3 p-2" style={{ backgroundColor: '#ffffffff' }}>
         <div className="col-12 d-flex flex-column flex-md-row justify-content-center align-items-center">
           <h1 className="mr-md-5 mb-3 mb-md-0">Stories</h1>
           <div className="d-flex gap-2">
@@ -155,14 +149,12 @@ function App() {
             <button onClick={() => setCategory('adult')} className="btn btn-transparent text-dark border-0" style={{ backgroundColor: 'transparent' }}><b>Mashaka & Thriller</b></button>
             <button onClick={() => setCategory('adult')} className="btn btn-transparent text-dark border-0" style={{ backgroundColor: 'transparent' }}><b>Ushairi & Ufantasia</b></button>
           </div>
-            <button type="button" className="btn btn-primary ml-3" onClick={handleShow}>Add New Story</button>
+          <button type="button" className="btn btn-primary ml-3" onClick={handleShow}>Login</button>
         </div>
       </div>
 
-      {/* Show AddStory modal/form if showAddStoryModal is true */}
-      {showAddStoryModal && <AddStory onAdd={handleAddStory} />}
-
-      <div className="row container mt-5">
+      {/* Body Content (with different background color) */}
+      <div className="row mt-5">
         {category === 'family' ? (
           <Family stories={filteredStories} />
         ) : (

@@ -122,8 +122,13 @@ function App() {
                       value={category}
                       onChange={(e) => setCategory(e.target.value)}
                     >
-                      <option value="family">Family</option>
-                      <option value="adults">Adult</option>
+                      <option value="Mapenzi & Mahaba">Mapenzi & Mahaba</option>
+                      <option value="Maisha">Maisha</option>
+                      <option value="Familia">Familia</option>
+                      <option value="Ndoto & Mafanikio">Ndoto & Mafanikio</option>
+                      <option value="Ucheshi">Ucheshi</option>
+                      <option value="Mashaka & Thriller">Mashaka & Thriller</option>
+                      <option value="Ushairi & Ufantasia">Ushairi & Ufantasia</option>
                     </select>
                   </div>
                   <div className="modal-footer">
@@ -142,12 +147,13 @@ function App() {
         <div className="col-12 d-flex flex-column flex-md-row justify-content-center align-items-center">
           <h1 className="mr-md-5 mb-3 mb-md-0">Stories</h1>
           <div className="d-flex gap-2">
-            <button onClick={() => setCategory('family')} className="btn btn-transparent text-dark border-0" style={{ backgroundColor: 'transparent' }}><b>Science Fiction</b></button>
-            <button onClick={() => setCategory('adult')} className="btn btn-transparent text-dark border-0" style={{ backgroundColor: 'transparent' }}><b>Romance</b></button>
-            <button onClick={() => setCategory('family')} className="btn btn-transparent text-dark border-0" style={{ backgroundColor: 'transparent' }}><b>Comedy</b></button>
-            <button onClick={() => setCategory('adult')} className="btn btn-transparent text-dark border-0" style={{ backgroundColor: 'transparent' }}><b>Thriller</b></button>
-            <button onClick={() => setCategory('family')} className="btn btn-transparent text-dark border-0" style={{ backgroundColor: 'transparent' }}><b>Fantasy</b></button>
-            <button onClick={() => setCategory('adult')} className="btn btn-transparent text-dark border-0" style={{ backgroundColor: 'transparent' }}><b>Poetry</b></button>
+            <button onClick={() => setCategory('family')} className="btn btn-transparent text-dark border-0" style={{ backgroundColor: 'transparent' }}><b>Mapenzi & Mahaba</b></button>
+            <button onClick={() => setCategory('adult')} className="btn btn-transparent text-dark border-0" style={{ backgroundColor: 'transparent' }}><b>Maisha</b></button>
+            <button onClick={() => setCategory('family')} className="btn btn-transparent text-dark border-0" style={{ backgroundColor: 'transparent' }}><b>Familia</b></button>
+            <button onClick={() => setCategory('adult')} className="btn btn-transparent text-dark border-0" style={{ backgroundColor: 'transparent' }}><b>Ndoto & Mafanikio</b></button>
+            <button onClick={() => setCategory('family')} className="btn btn-transparent text-dark border-0" style={{ backgroundColor: 'transparent' }}><b>Ucheshi</b></button>
+            <button onClick={() => setCategory('adult')} className="btn btn-transparent text-dark border-0" style={{ backgroundColor: 'transparent' }}><b>Mashaka & Thriller</b></button>
+            <button onClick={() => setCategory('adult')} className="btn btn-transparent text-dark border-0" style={{ backgroundColor: 'transparent' }}><b>Ushairi & Ufantasia</b></button>
           </div>
             <button type="button" className="btn btn-primary ml-3" onClick={handleShow}>Add New Story</button>
         </div>

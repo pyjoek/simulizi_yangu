@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('image');
-            $table->enum('category', ['adult', 'family', 'life', 'school']);
+            $table->enum('category', ["Mapenzi & Mahaba", "Maisha", "Familia", "Ndoto & Mafanikio", "Ucheshi", "Mashaka & Thriller", "Ushairi & Ufantasia"]);
             $table->text('content');
             $table->timestamps();
         });

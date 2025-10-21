@@ -63,7 +63,7 @@ function App() {
   const filteredStories = stories.filter(story => story.category === category);
 
   return (
-    <div className='ml-4 mr-4'>
+    <div>
       
       {/* Modal component */}
       {showModal && (
@@ -137,7 +137,7 @@ function App() {
       )}
 
       {/* Navigation Bar (with different background color) */}
-      <div className="row justify-content-center text-center mb-3 p-2" style={{ backgroundColor: '#ffffffff' }}>
+      <div className="row justify-content-center text-center mb-3 p-2" style={{ backgroundColor: '#ffffffff', boxShadow: '2px 0 8px  rgba(0, 0, 0, 0.6)'}}>
         <div className="col-12 d-flex flex-column flex-md-row justify-content-center align-items-center">
           <h1 className="mr-md-5 mb-3 mb-md-0">Stories</h1>
           <div className="d-flex gap-2">
@@ -155,11 +155,14 @@ function App() {
 
       {/* Body Content (with different background color) */}
       <div className="row mt-5">
-        {category === 'family' ? (
+        {category === 'Mapenzi & Mahaba' ? (
           <Family stories={filteredStories} />
-        ) : (
-          <Adult stories={filteredStories} />
-        )}
+        ) : 
+        category === 'adult' ? (
+          <Adult stories={filteredStories} /> 
+        ) :
+        <Adult stories={filteredStories} />
+        }
       </div>
     </div>
   );

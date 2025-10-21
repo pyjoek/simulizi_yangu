@@ -141,13 +141,13 @@ function App() {
         <div className="col-12 d-flex flex-column flex-md-row justify-content-center align-items-center">
           <h1 className="mr-md-5 mb-3 mb-md-0">Stories</h1>
           <div className="d-flex gap-2">
-            <button onClick={() => setCategory('family')} className="btn btn-transparent text-dark border-0" style={{ backgroundColor: 'transparent' }}><b>Mapenzi & Mahaba</b></button>
-            <button onClick={() => setCategory('adult')} className="btn btn-transparent text-dark border-0" style={{ backgroundColor: 'transparent' }}><b>Maisha</b></button>
-            <button onClick={() => setCategory('family')} className="btn btn-transparent text-dark border-0" style={{ backgroundColor: 'transparent' }}><b>Familia</b></button>
-            <button onClick={() => setCategory('adult')} className="btn btn-transparent text-dark border-0" style={{ backgroundColor: 'transparent' }}><b>Ndoto & Mafanikio</b></button>
-            <button onClick={() => setCategory('family')} className="btn btn-transparent text-dark border-0" style={{ backgroundColor: 'transparent' }}><b>Ucheshi</b></button>
-            <button onClick={() => setCategory('adult')} className="btn btn-transparent text-dark border-0" style={{ backgroundColor: 'transparent' }}><b>Mashaka & Thriller</b></button>
-            <button onClick={() => setCategory('adult')} className="btn btn-transparent text-dark border-0" style={{ backgroundColor: 'transparent' }}><b>Ushairi & Ufantasia</b></button>
+            <button onClick={() => setCategory('Mapenzi & Mahaba')} className="btn btn-transparent text-dark border-0" style={{ backgroundColor: 'transparent' }}><b>Mapenzi & Mahaba</b></button>
+            <button onClick={() => setCategory('Maisha')} className="btn btn-transparent text-dark border-0" style={{ backgroundColor: 'transparent' }}><b>Maisha</b></button>
+            <button onClick={() => setCategory('Familia')} className="btn btn-transparent text-dark border-0" style={{ backgroundColor: 'transparent' }}><b>Familia</b></button>
+            <button onClick={() => setCategory('Ndoto & Mafanikio')} className="btn btn-transparent text-dark border-0" style={{ backgroundColor: 'transparent' }}><b>Ndoto & Mafanikio</b></button>
+            <button onClick={() => setCategory('Ucheshi')} className="btn btn-transparent text-dark border-0" style={{ backgroundColor: 'transparent' }}><b>Ucheshi</b></button>
+            <button onClick={() => setCategory('Mashaka & Thriller')} className="btn btn-transparent text-dark border-0" style={{ backgroundColor: 'transparent' }}><b>Mashaka & Thriller</b></button>
+            <button onClick={() => setCategory('Ushairi & Ufantasia')} className="btn btn-transparent text-dark border-0" style={{ backgroundColor: 'transparent' }}><b>Ushairi & Ufantasia</b></button>
           </div>
           <button type="button" className="btn btn-primary ml-3" onClick={handleShow}>Login</button>
         </div>
@@ -157,11 +157,19 @@ function App() {
       <div className="row mt-5">
         {category === 'Mapenzi & Mahaba' ? (
           <Family stories={filteredStories} />
-        ) : 
-        category === 'adult' ? (
+        ) : category === 'Maisha' ? (
           <Adult stories={filteredStories} /> 
-        ) :
-        <Adult stories={filteredStories} />
+        ) : category === 'Familia' ? (
+          <Adult stories={filteredStories} /> 
+        ) : category === 'Ndoto & Mafanikio' ? (
+          <Adult stories={filteredStories} /> 
+        ) : category === 'Ucheshi' ? (
+          <Adult stories={filteredStories} /> 
+        ) : category === 'Mashaka & Thriller' ? (
+          <Adult stories={filteredStories} /> 
+        ) : (
+          <Adult stories={filteredStories} /> 
+        )
         }
       </div>
     </div>

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('image');
-            $table->string('category');
+            $table->enum('category', ["Mapenzi & Mahaba", "Maisha", "Familia", "Ndoto & Mafanikio", "Ucheshi", "Mashaka & Thriller", "Ushairi & Ufantasia"]);
             $table->text('content');
             $table->timestamps();
         });
@@ -29,4 +29,3 @@ return new class extends Migration
         Schema::dropIfExists('stories');
     }
 };
-// , ["Mapenzi & Mahaba", "Maisha", "Familia", "Ndoto & Mafanikio", "Ucheshi", "Mashaka & Thriller", "Ushairi & Ufantasia"]

@@ -14,7 +14,7 @@ class StoryController extends Controller
         // Validate the incoming request to ensure it's an image
         $validated = $request->validate([
             'title' => 'required|string|max:255',
-            'category' => 'required|in:adult,family,life,school', // Ensuring valid category
+            'category' => 'required|', // Ensuring valid category
             'content' => 'required|string',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',  // Validation rule for image
             // 'image' => 'required',  // Validation rule for image

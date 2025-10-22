@@ -125,7 +125,6 @@
 
 
 import { useEffect, useState } from 'react';
-import Adult from './category/adult';
 import Family from './category/family';
 
 function App() {
@@ -160,10 +159,11 @@ function App() {
       
       if (!res.ok) throw new Error('Failed to add story');
       
+      handleClose()
       setTitle('');
       setContent('');
       setImage(null);
-      setCategory('family');
+      setCategory('Familia');
     } catch (err) {
       console.error(err);
     }
@@ -283,17 +283,17 @@ function App() {
         {category === 'Mapenzi & Mahaba' ? (
           <Family stories={filteredStories} />
         ) : category === 'Maisha' ? (
-          <Adult stories={filteredStories} /> 
+          <Family stories={filteredStories} /> 
         ) : category === 'Familia' ? (
-          <Adult stories={filteredStories} /> 
+          <Family stories={filteredStories} /> 
         ) : category === 'Ndoto & Mafanikio' ? (
-          <Adult stories={filteredStories} /> 
+          <Family stories={filteredStories} /> 
         ) : category === 'Ucheshi' ? (
-          <Adult stories={filteredStories} /> 
+          <Family stories={filteredStories} /> 
         ) : category === 'Mashaka & Thriller' ? (
-          <Adult stories={filteredStories} /> 
+          <Family stories={filteredStories} /> 
         ) : (
-          <Adult stories={filteredStories} /> 
+          <Family stories={filteredStories} /> 
         )
         }
       </div>

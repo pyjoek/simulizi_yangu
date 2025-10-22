@@ -1,10 +1,7 @@
-// import StoryPart from "../StoryPart";
-
-// Family Component
 const Family = ({ stories }) => {
   
   return (
-    <div className="row">
+    <div className="row justify-content-between">
       {stories.map(story => (
         <div key={story.id} className='col-lg-3 mb-4 ml-5'>
           <div className="px-3 py-2 bg-white rounded shadow-sm d-inline-block" style={{ width: '400px', height: '300px' }}>

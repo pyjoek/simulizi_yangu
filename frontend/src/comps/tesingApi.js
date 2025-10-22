@@ -6,7 +6,7 @@ import Family from './category/family';
 function App() {
   const [stories, setStories] = useState([]);
   const [category, setCategory] = useState('family');
-  const [showAddStoryModal, setShowAddStoryModal] = useState(false);
+  // const [showAddStoryModal, setShowAddStoryModal] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
@@ -26,25 +26,29 @@ function App() {
     formData.append('title', title);
     formData.append('content', content);
     formData.append('category', category);
-    console.log(formData)
     
     try {
       const res = await fetch('http://127.0.0.1:8000/api/newStory', {
         method: 'POST',
-        body: formData
+        body: formData,
       });
+      for (let [key, value] of formData.entries()) {
+        console.log(`${key}:`, value);
+}
       
       if (!res.ok) throw new Error('Failed to add story');
       
+      // handleAddStory()
       handleClose()
       setTitle('');
       setContent('');
       setImage(null);
       setCategory('Familia');
     } catch (err) {
-      console.error(err);
+      console.error(`Here: ${err}`);
     }
   };
+
 
   useEffect(() => {
     fetchStories();
@@ -57,10 +61,10 @@ function App() {
       .catch(err => console.error(err));
   };
 
-  const handleAddStory = (newStory) => {
-    setStories(prev => [...prev, newStory]);
-    setShowAddStoryModal(false);
-  };
+  // const handleAddStory = (newStory) => {
+  //   setStories(prev => [...prev, newStory]);
+  //   setShowAddStoryModal(false);
+  // };
 
   const filteredStories = stories.filter(story => story.category === category);
 
@@ -154,6 +158,8 @@ function App() {
           <button type="button" className="btn btn-primary ml-3" onClick={handleShow}>Login</button>
         </div>
       </div>
+
+      
 
       {/* Body Content (with different background color) */}
       <div className="mt-5">

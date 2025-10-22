@@ -9,15 +9,14 @@ use Illuminate\Support\Facades\Storage;
 class StoryController extends Controller
 {
    public function uploadImage(Request $request)
-    {
-        
+    {        
         // Validate the incoming request to ensure it's an image
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'category' => 'required|', // Ensuring valid category
             'content' => 'required|string',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',  // Validation rule for image
-            // 'image' => 'required',  // Validation rule for image
+            // 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',  // Validation rule for image
+            'image' => 'required',  // Validation rule for image
         ]);
         
         // Check if file is uploaded

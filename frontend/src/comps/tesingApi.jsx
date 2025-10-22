@@ -122,7 +122,7 @@
 // export default Testing;
 
 
-
+// eslint-disable-next-line
 
 import { useEffect, useState } from 'react';
 import Family from './category/family';

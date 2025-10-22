@@ -1,15 +1,15 @@
 const Family = ({ stories }) => {
   return (
-    <div className="row ml-5">
+    <div className="container row">
       {stories.map((story) => (
-        <div key={story.id} className="col-lg-6 col-md-4 col-sm-6 mb-4">
+        <div key={story.id} className="col-lg-4 col-md-4 col-sm-6 mb-4">
           <div
             className="px-3 py-2 bg-white d-inline-block"
             style={{
-              width: "450px",
+              width: "350px",
               borderRadius: "25px",
               boxShadow: "0px 6px 10px rgba(0, 0, 0, 0.5)",
-              height: "300px", // Give a fixed height for consistent layout
+              height: "280px", // Give a fixed height for consistent layout
               overflow: "hidden", // Prevent content overflow
             }}
           >

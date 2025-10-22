@@ -1,127 +1,3 @@
-
-// import { useEffect, useState } from 'react';
-// import Adult from './category/adult';
-// import Family from './category/family';
-// import AddStoryModal from './AddStoryModal'; // New modal component
-// import StoryList from './StoryList'; // New component to handle rendering stories
-// import CategoryButtons from './CategoryButtons'; // New component for category buttons
-
-// function Testing() {
-//   const [stories, setStories] = useState([]);
-//   const [category, setCategory] = useState('Familia');
-//   const [showAddStoryModal, setShowAddStoryModal] = useState(false);
-//   const [showModal, setShowModal] = useState(false);
-//   const [title, setTitle] = useState('');
-//   const [content, setContent] = useState('');
-//   const [image, setImage] = useState('');
-//   const [error, setError] = useState(null); // For error handling
-
-//   const categories = [
-//     'Mapenzi & Mahaba',
-//     'Maisha',
-//     'Familia',
-//     'Ndoto & Mafanikio',
-//     'Ucheshi',
-//     'Mashaka & Thriller',
-//     'Ushairi & Ufantasia',
-//   ];
-
-//   const handleShow = () => setShowModal(true);
-//   const handleClose = () => setShowModal(false);
-
-//   const handleImageUpload = (e) => {
-//     setImage(e.target.files[0]);
-//   };
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     const formData = new FormData();
-//     formData.append('image', image);
-//     formData.append('title', title);
-//     formData.append('content', content);
-//     formData.append('category', category);
-    
-//     try {
-//       const res = await fetch('http://localhost:8000/api/newStory', {
-//         method: 'POST',
-//         body: formData
-//       });
-
-//       if (!res.ok) throw new Error('Failed to add story');
-      
-//       setTitle('');
-//       setContent('');
-//       setImage(null);
-//       setCategory('Familia');
-//       setShowAddStoryModal(false);
-//       fetchStories(); // Refresh the stories after a successful submission
-//     } catch (err) {
-//       setError('Failed to add story. Please try again later.');
-//       console.error(err);
-//     }
-//   };
-
-//   const fetchStories = () => {
-//     fetch('http://localhost:8000/api/stories')
-//       .then(res => res.json())
-//       .then(data => setStories(data))
-//       .catch(err => {
-//         console.error(err);
-//         setError('Failed to fetch stories. Please try again later.');
-//       });
-//   };
-
-//   useEffect(() => {
-//     fetchStories();
-//   }, []);
-
-//   const filteredStories = stories.filter(story => story.category === category);
-
-//   return (
-//     <div>
-//       {/* Error handling */}
-//       {error && (
-//         <div className="alert alert-danger" role="alert">
-//           {error}
-//         </div>
-//       )}
-
-//       {/* Modal component */}
-//       {showModal && (
-//         <AddStoryModal
-//           title={title}
-//           content={content}
-//           image={image}
-//           category={category}
-//           setTitle={setTitle}
-//           setContent={setContent}
-//           setCategory={setCategory}
-//           handleSubmit={handleSubmit}
-//           handleImageUpload={handleImageUpload}
-//           handleClose={handleClose}
-//         />
-//       )}
-
-//       {/* Navigation Bar */}
-//       <div className="row justify-content-center text-center mb-3 p-2" style={{ backgroundColor: '#ffffffff', boxShadow: '2px 0 8px rgba(0, 0, 0, 0.6)' }}>
-//         <div className="col-12 d-flex flex-column flex-md-row justify-content-center align-items-center">
-//           <h1 className="mr-md-5 mb-3 mb-md-0">Stories</h1>
-//           <CategoryButtons categories={categories} setCategory={setCategory} />
-//           <button type="button" className="btn btn-primary ml-3" onClick={handleShow}>Login</button>
-//         </div>
-//       </div>
-
-//       {/* Body Content */}
-//       <div className="row mt-5">
-//         <StoryList stories={filteredStories} />
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default Testing;
-
-
 // eslint-disable-next-line
 
 import { useEffect, useState } from 'react';
@@ -150,9 +26,10 @@ function App() {
     formData.append('title', title);
     formData.append('content', content);
     formData.append('category', category);
+    console.log(formData)
     
     try {
-      const res = await fetch('http://localhost:8000/api/newStory', {
+      const res = await fetch('http://127.0.0.1:8000/api/newStory', {
         method: 'POST',
         body: formData
       });
@@ -263,7 +140,7 @@ function App() {
 
       {/* Navigation Bar (with different background color) */}
       <div className="row justify-content-center text-center mb-3 p-2" style={{ backgroundColor: '#ffffffff', boxShadow: '2px 0 8px  rgba(0, 0, 0, 0.6)'}}>
-        <div className="col-12 d-flex flex-column flex-md-row justify-content-center align-items-center">
+        <div className="col-12 d-flex flex-column flex-md-row justify-content-center align-items-center container">
           <h1 className="mr-md-5 mb-3 mb-md-0">Stories</h1>
           <div className="d-flex gap-2">
             <button onClick={() => setCategory('Mapenzi & Mahaba')} className="btn btn-transparent text-dark border-0" style={{ backgroundColor: 'transparent' }}><b>Mapenzi & Mahaba</b></button>
@@ -279,7 +156,7 @@ function App() {
       </div>
 
       {/* Body Content (with different background color) */}
-      <div className="row mt-5">
+      <div className="mt-5">
         {category === 'Mapenzi & Mahaba' ? (
           <Family stories={filteredStories} />
         ) : category === 'Maisha' ? (

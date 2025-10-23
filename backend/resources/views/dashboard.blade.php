@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- Modal for adding a new story -->
-        <div class="modal fade show" style="display: block;" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="false">
+        <!-- <div class="modal fade show" style="display: block;" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="false">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -46,7 +46,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
     <!-- Navigation Bar -->
     <div class="row justify-content-center text-center mb-3 p-2" style="background-color: #ffffff; box-shadow: 2px 0 8px rgba(0, 0, 0, 0.6);">
@@ -61,20 +61,27 @@
                 <a href="{{ route('stories.index', ['category' => 'Mashaka & Thriller']) }}" class="btn btn-transparent text-dark border-0"><b>Mashaka & Thriller</b></a>
                 <a href="{{ route('stories.index', ['category' => 'Ushairi & Ufantasia']) }}" class="btn btn-transparent text-dark border-0"><b>Ushairi & Ufantasia</b></a>
             </div>
-            <button type="button" class="btn btn-primary ml-3" data-toggle="modal" data-target="#exampleModal">Add Story</button>
+            <!-- <button type="button" class="btn btn-primary ml-3" data-toggle="modal" data-target="#exampleModal">Add Story</button> -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addStoryModal">
+                Add New Story
+            </button>
         </div>
     </div>
 
     <!-- Display Stories -->
-    <div class="mt-5">
-        @foreach ($stories as $story)
-            @if ($story->category == $category)
-                <div class="story">
-                    <h2>{{ $story->title }}</h2>
-                    <p>{{ $story->content }}</p>
-                    <img src="{{ asset('storage/'.$story->image_path) }}" alt="Story Image" style="max-width: 100%; height: auto;">
-                </div>
-            @endif
-        @endforeach
+    <div class="container">
+        <div class="row">
+            @foreach ($stories as $story)
+                @if ($story->category == $category)
+                    <div class="col-lg-6 my-4">
+                        <div class="story bg-white rounded shadow p-4">
+                            <h2 class="mb-3">{{ $story->title }}</h2>
+                            <p>{{ $story->content }}</p>
+                            <img src="{{ asset('storage/'.$story->image_path) }}" alt="Story Image" class="img-fluid rounded mt-3">
+                        </div>
+                    </div>
+                @endif
+            @endforeach
+        </div>
     </div>
 @endsection

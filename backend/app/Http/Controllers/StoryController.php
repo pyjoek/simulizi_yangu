@@ -60,7 +60,7 @@ class StoryController extends Controller
         // dd($stories);
         
         // Pass the data to the view
-        return view('stories.index', compact('stories', 'category'));
+        return view('dashboard', compact('stories', 'category'));
     }
 
     public function show($id)

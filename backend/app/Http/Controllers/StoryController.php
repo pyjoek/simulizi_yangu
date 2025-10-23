@@ -63,6 +63,19 @@ class StoryController extends Controller
         return view('dashboard', compact('stories', 'category'));
     }
 
+    public function welcome(Request $request)
+    {
+        // Get category from the request, default to 'Familia' if not provided
+        $category = $request->get('category', 'Familia');
+        
+        // Fetch stories by category
+        $stories = Story::where('category', $category)->get();
+        // dd($stories);
+        
+        // Pass the data to the view
+        return view('welcome', compact('stories', 'category'));
+    }
+
     public function show($id)
     {
         $story = Story::findOrFail($id);

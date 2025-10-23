@@ -61,10 +61,7 @@
                 <a href="{{ route('stories.index', ['category' => 'Mashaka & Thriller']) }}" class="btn btn-transparent text-dark border-0"><b>Mashaka & Thriller</b></a>
                 <a href="{{ route('stories.index', ['category' => 'Ushairi & Ufantasia']) }}" class="btn btn-transparent text-dark border-0"><b>Ushairi & Ufantasia</b></a>
             </div>
-            <!-- <button type="button" class="btn btn-primary ml-3" data-toggle="modal" data-target="#exampleModal">Add Story</button> -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addStoryModal">
-                Add New Story
-            </button>
+            <a href="/login"><button type="button" class="btn btn-primary ml-3">Sign In / Sing Out</button></a>
         </div>
     </div>
 

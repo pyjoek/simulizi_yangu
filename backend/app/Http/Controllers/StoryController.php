@@ -50,13 +50,23 @@ class StoryController extends Controller
         return response()->json(['message' => 'File upload failed'], 400);
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        // Fetch all stories from the database
-        $stories = Story::all();
+        // Get category from the request, default to 'Familia' if not provided
+        $category = $request->get('category', 'Familia');
+        
+        // Fetch stories by category
+        $stories = Story::where('category', $category)->get();
+        // dd($stories);
+        
+        // Pass the data to the view
+        return view('stories.index', compact('stories', 'category'));
+    }
 
-        // Return stories as JSON with the file URL
-        return response()->json($stories);
+    public function show($id)
+    {
+        $story = Story::findOrFail($id);
+        return view('stories.show', compact('story'));
     }
 
 }

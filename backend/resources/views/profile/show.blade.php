@@ -24,15 +24,42 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
+    <div class="mt-5 py-12">
         <div class="container">
             <div class="row g-4">  <!-- Grid system to create responsive layout -->
-                <a href="/addStory" class="btn btn-primary ml-3 mb-3">
-                    <i class="bi bi-pencil-square"></i> Add Story<!-- Bootstrap Add Story Icon -->
-                </a>
-                <a href="/profile" class="btn btn-primary ml-3 mb-3">
-                    <i class="bi bi-pencil-square"></i> Settings<!-- Bootstrap Add Story Icon -->
-                </a>
+                <div class="col-lg-8">
+                    <h1>Karibu, {name goes here}</h1>
+                    <h6>Simamia hadithi zako na andika mpya</h6>
+                </div>
+
+                <!-- buttons -->
+                <div class="col-lg-4">
+                    <a href="/addStory" class="btn btn-primary ml-3 mb-3">
+                        <i class="bi bi-pencil-square"></i> Add Story<!-- Bootstrap Add Story Icon -->
+                    </a>
+                    <a href="/profile" class="btn btn-primary ml-3 mb-3">
+                        <i class="bi bi-pencil-square"></i> Settings<!-- Bootstrap Add Story Icon -->
+                    </a>
+                </div>
+
+                <h1>Hadithi Zangu</h1>
+                <div class="">
+                    <div class="container">
+                        <div class="row">
+                            @foreach ($stories as $story)
+                                @if ($story->category == $category)
+                                    <div class="col-lg-6 my-4">
+                                        <div class="story bg-white rounded shadow p-4">
+                                            <h2 class="mb-3">{{ $story->title }}</h2>
+                                            <p>{{ $story->content }}</p>
+                                            <img src="{{ asset('storage/'.$story->image) }}" alt="Story Image" class="img-fluid rounded mt-3">
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
             </div>
         </div> <!-- End of container -->
     </div>

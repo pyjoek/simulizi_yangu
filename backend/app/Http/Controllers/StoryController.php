@@ -62,7 +62,8 @@ class StoryController extends Controller
 
     public function showStories() 
     {
-        $stories = Story::all();
+        // $stories = Story::all();
+        $stories = auth()->user()->stories;
         return view('profile.show', compact('stories'));
     }
 

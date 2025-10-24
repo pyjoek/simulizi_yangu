@@ -6,7 +6,7 @@
 @section('content')
 <div class="container d-flex justify-content-center align-items-center min-vh-100">
     <div class="text-center" style="max-width: 900px; width: 100%;">
-        <h1 class="display-4 mb-3" style="font-family: 'Arial', sans-serif;">Karibu kwenye Siti Yangu - Mahali pa kusimuliana Hadithi</h1>
+        <h1 class="display-4 mb-3" style="font-family: 'Arial', sans-serif;">Karibu kwenye Siri Yangu - Mahali pa kusimuliana Hadithi</h1>
         <h4 class="lead mb-3" style="font-family: 'Times New Roman', serif;">Pata hadithi za mapenzi, maisha, familia, ndoto na zaidi kutoka kwa watu kama wewe</h4>
 
             <a href="/login">

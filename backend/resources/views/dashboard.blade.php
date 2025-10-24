@@ -1,5 +1,16 @@
 @extends('layouts.app')
 
+@section('button')
+<div>
+    <a href="/addStory"><button type="button" class="btn btn-primary ml-3 mb-3">Add Story</button></a>
+    <a href="/addStory"><button type="button" class="btn btn-primary ml-3 mb-3">Profile</button></a>
+    <form action="{{ route('logout') }}" method="POST" class="d-inline">
+        @csrf
+        <button type="submit" class="btn btn-primary mb-3 ml-3">Sign Out</button>
+    </form>
+</div>
+@endsection
+
 @section('content')
     <!-- Display Stories -->
     <div class="container">

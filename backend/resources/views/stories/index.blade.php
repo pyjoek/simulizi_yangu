@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('button')
+<a href="/addStory"><button type="button" class="btn btn-primary ml-3">Add Story</button></a>
+@endsection
+
 @section('content')
         <div class="container my-5 d-flex justify-content-center">
             <div class="card shadow-lg rounded p-4" style="max-width: 600px; width: 100%;">

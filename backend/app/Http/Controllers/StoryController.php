@@ -64,6 +64,12 @@ class StoryController extends Controller
         return view('welcome', compact('stories', 'category'));
     }
 
+    public function showStories() 
+    {
+        $stories = Story::all();
+        return view('profile.show', compact('stories'));
+    }
+
     public function show($id)
     {
         $story = Story::findOrFail($id);

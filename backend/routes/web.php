@@ -23,9 +23,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [StoryController::class, 'index'])->name('dashboard');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::get('/profile/show', function () {
-        return view('profile.show');
-    });
+    Route::get('/profile/show', [StoryController::class, 'showStories']);
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::post('/newStory', [StoryController::class, 'uploadImage'])->name('stories.store');

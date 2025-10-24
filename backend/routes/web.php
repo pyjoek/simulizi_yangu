@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [StoryController::class, 'welcome']);
+Route::get('/story', [StoryController::class, 'index'])->name('stories.index');
+Route::get('/story/{id}', [StoryController::class, 'show'])->name('stories.show');
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [StoryController::class, 'index'])->name('dashboard');
@@ -29,10 +31,6 @@ Route::middleware('auth')->group(function () {
     });
 });
 
-Route::get('/story', [StoryController::class, 'index'])->name('stories.index');
-
-
-Route::get('/story/{id}', [StoryController::class, 'show'])->name('stories.show');
 
 
 require __DIR__.'/auth.php';

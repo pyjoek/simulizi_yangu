@@ -2,10 +2,7 @@
 
 @section('button')
 <div>
-    <a href="/addStory" class="btn btn-primary ml-3 mb-3">
-    <i class="bi bi-pencil-square"></i> <!-- Bootstrap Add Story Icon -->
-    </a>
-    <a href="/profile" class="btn border ml-3 mb-3">
+    <a href="/profile/show" class="btn border ml-3 mb-3">
         <i class="bi bi-person"></i> <!-- Bootstrap Profile Icon -->
     </a>
 

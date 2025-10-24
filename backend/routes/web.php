@@ -21,6 +21,8 @@ Route::get('/story/{id}', [StoryController::class, 'show'])->name('stories.show'
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [StoryController::class, 'index'])->name('dashboard');
+
+    Route::patch('/profile/pic', [ProfileController::class, 'profile'])->name('prof.update');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::get('/profile/show', [StoryController::class, 'showStories']);

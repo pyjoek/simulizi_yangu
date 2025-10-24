@@ -21,6 +21,32 @@
     <div class="py-12">
         <div class="container">
             <div class="row g-4">  <!-- Grid system to create responsive layout -->
+                <div class="col-lg-6">
+                    <img src="{{ asset('storage/' . auth()->user()->prof) }}" alt="{{ auth()->user()->name }}" class="img-fluid col-md-6" style="max-width: 400px; height: auto;">
+                </div>
+
+                <div class="col-lg-6">
+                    <form action="{{ route('prof.update') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @method('PATCH')
+                        <!-- Upload Image Button -->
+                        <div class="mt-4">
+                            <x-input-label for="profile_picture" :value="__('Upload Profile Picture')" />
+                            <label for="profile_picture" class="btn btn-primary">
+                                <i class="bi bi-upload"></i> Upload Image
+                            </label>
+                            <input id="profile_picture" type="file" name="profile_picture" class="d-none" accept="image/*" />
+                            <x-input-error :messages="$errors->get('profile_picture')" class="mt-2" />
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="mt-4">
+                            <x-primary-button>
+                                {{ __('Save Changes') }}
+                            </x-primary-button>
+                        </div>
+                    </form>
+                </div>
                 
                 <!-- Update Profile Information Section -->
                 <div class="col-12 col-md-6">

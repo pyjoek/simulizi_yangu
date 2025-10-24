@@ -15,19 +15,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [StoryController::class, 'index']);
-
-Route::get('/dashboard', [StoryController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/', [StoryController::class, 'welcome']);
 
 Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', [StoryController::class, 'index'])->name('dashboard');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::post('/newStory', [StoryController::class, 'uploadImage'])->name('stories.store');
+    Route::get('/addStory', function () {
+        return view('stories.index');
+    });
 });
 
 Route::get('/story', [StoryController::class, 'index'])->name('stories.index');
+
+
 Route::get('/story/{id}', [StoryController::class, 'show'])->name('stories.show');
 
 

@@ -28,7 +28,7 @@
     <body class="font-sans antialiased">
          <div class="row justify-content-center text-center mb-3 p-2" style="background-color: #ffffff; box-shadow: 2px 0 8px rgba(0, 0, 0, 0.6);">
             <div class="col-12 d-flex flex-column flex-md-row justify-content-center align-items-center container">
-                <h1 class="mr-md-5 mb-3 mb-md-0">Stories</h1>
+                <h1 class="mr-md-5 mb-3 mb-md-0"><a href="/">Stories</a></h1>
                 <div class="d-flex gap-2">
                     <a href="{{ route('stories.index', ['category' => 'Mapenzi & Mahaba']) }}" class="btn btn-transparent text-dark border-0"><b>Mapenzi & Mahaba</b></a>
                     <a href="{{ route('stories.index', ['category' => 'Maisha']) }}" class="btn btn-transparent text-dark border-0"><b>Maisha</b></a>
@@ -38,7 +38,7 @@
                     <a href="{{ route('stories.index', ['category' => 'Mashaka & Thriller']) }}" class="btn btn-transparent text-dark border-0"><b>Mashaka & Thriller</b></a>
                     <a href="{{ route('stories.index', ['category' => 'Ushairi & Ufantasia']) }}" class="btn btn-transparent text-dark border-0"><b>Ushairi & Ufantasia</b></a>
                 </div>
-                <a href="{{ route('stories.index') }}"><button type="button" class="btn btn-primary ml-3">Add Story</button></a>
+                <a href="/addStory"><button type="button" class="btn btn-primary ml-3">Add Story</button></a>
             </div>
         </div>
         @yield('content')

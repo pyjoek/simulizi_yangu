@@ -10,44 +10,43 @@ class StoryController extends Controller
 {
    public function uploadImage(Request $request)
     {        
-        // Validate the incoming request to ensure it's an image
+       // Validate the incoming request
         $validated = $request->validate([
             'title' => 'required|string|max:255',
-            'category' => 'required|', // Ensuring valid category
+            'category' => 'required|string', // Ensure category is provided
             'content' => 'required|string',
-            // 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',  // Validation rule for image
-            'image' => 'required',  // Validation rule for image
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Validate image
         ]);
-        
-        // Check if file is uploaded
+
+        // Check if file is uploaded and valid
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            // Get the uploaded file
+            // Get uploaded file
             $file = $request->file('image');
-            
-            // Generate a unique file name with the original extension
+
+            // Generate unique file name
             $fileName = time() . '.' . $file->getClientOriginalExtension();
-            
-            // Define the path to save the file (You can save it in public or any folder)
-            $filePath = $file->storeAs('uploads', $fileName, 'public'); // Saves file in storage/app/public/uploads
-            
-            // Create a new story record in the database
+
+            // Store file in public/uploads (storage/app/public/uploads)
+            $filePath = $file->storeAs('uploads', $fileName, 'public');
+
+            // Create a new story record
             $story = Story::create([
                 'title' => $request->input('title'),
-                'image' => $filePath, // Path to the uploaded image
+                'image' => $filePath,
                 'category' => $request->input('category'),
                 'content' => $request->input('content'),
             ]);
-            // return response()->json(['message' => $request]);
 
-            // Return success response with the file path (URL to access the image)
-            return response()->json([
-                'message' => 'File uploaded and story created successfully',
-                'story' => $story, // Return the story object
-                'file_path' => asset('storage/' . $filePath),  // This generates a URL that can be accessed
-            ], 200);
+            // Redirect back or to another page with success message
+            return redirect('/')
+                ->with('success', 'Story created successfully!');
         }
 
-        return response()->json(['message' => 'File upload failed'], 400);
+        // If upload fails
+        return redirect()
+            ->back()
+            ->with('error', 'File upload failed. Please try again.')
+            ->withInput();
     }
 
     public function index(Request $request)

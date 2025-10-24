@@ -15,6 +15,10 @@
               <!-- Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
+        <!-- Add this inside <head> in your main layout blade file -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+
         <!-- Bootstrap JS Bundle (with Popper) -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -28,7 +32,7 @@
     <body class="font-sans antialiased">
          <div class="row justify-content-center text-center mb-3 p-2" style="background-color: #ffffff; box-shadow: 2px 0 8px rgba(0, 0, 0, 0.6);">
             <div class="col-12 d-flex flex-column flex-md-row justify-content-center align-items-center container">
-                <h1 class="mr-md-5 mb-3 mb-md-0"><a href="/">Stories</a></h1>
+                <h1 class="mr-md-5 mb-3 mb-md-0">Stories</h1>
                 <div class="d-flex gap-2">
                     <a href="{{ route('stories.index', ['category' => 'Mapenzi & Mahaba']) }}" class="btn btn-transparent text-dark border-0"><b>Mapenzi & Mahaba</b></a>
                     <a href="{{ route('stories.index', ['category' => 'Maisha']) }}" class="btn btn-transparent text-dark border-0"><b>Maisha</b></a>

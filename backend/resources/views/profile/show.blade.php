@@ -2,7 +2,6 @@
 
 @section('button')
 <div>
-
     <a href="/profile" class="btn border ml-3 mb-3">
         <i class="bi bi-person"></i> <!-- Bootstrap Profile Icon -->
     </a>
@@ -28,17 +27,17 @@
         <div class="container">
             <div class="row g-4">  <!-- Grid system to create responsive layout -->
                 <div class="col-lg-8">
-                    <h1>Karibu, {name goes here}</h1>
+                    <h1>Karibu, {{ auth()->user()->name }}</h1>
                     <h6>Simamia hadithi zako na andika mpya</h6>
                 </div>
 
                 <!-- buttons -->
                 <div class="col-lg-4">
+                    <a href="/profile" class="btn border ml-3 mb-3">
+                         Settings
+                    </a>
                     <a href="/addStory" class="btn btn-primary ml-3 mb-3">
                         <i class="bi bi-pencil-square"></i> Add Story<!-- Bootstrap Add Story Icon -->
-                    </a>
-                    <a href="/profile" class="btn btn-primary ml-3 mb-3">
-                        <i class="bi bi-pencil-square"></i> Settings<!-- Bootstrap Add Story Icon -->
                     </a>
                 </div>
 

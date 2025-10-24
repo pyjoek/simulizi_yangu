@@ -22,16 +22,12 @@ class StoryController extends Controller
                 $path = $request->file('image')->store('profiles', 'public');
             }
 
-            // return response()->json([
-            //     'data' => $path
-            // ], 201);
-            // dd($request);
-
             $story = Story::create([
                 'title' => $request->input('title'),
                 'category' => $request->input('category'),
                 'content' => $request->input('content'),
-                'image' => $path,  // Store the file path in the 'image' column
+                'image' => $path,  
+                'user_id' => $request->user_id
             ]);
 
             return redirect('/')

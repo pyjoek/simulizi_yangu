@@ -9,5 +9,10 @@ class Story extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'image', 'content', 'category'];
+    protected $fillable = ['title', 'image', 'content', 'category', 'user_id'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

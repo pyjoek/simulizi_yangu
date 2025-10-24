@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('image');
             $table->enum('category', ["Mapenzi & Mahaba", "Maisha", "Familia", "Ndoto & Mafanikio", "Ucheshi", "Mashaka & Thriller", "Ushairi & Ufantasia"]);
             $table->text('content');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

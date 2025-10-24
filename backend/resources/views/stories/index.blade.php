@@ -25,6 +25,7 @@
                     <div class="mb-3">
                         <label for="title" class="form-label">Title:</label>
                         <input type="text" class="form-control" id="title" name="title" placeholder="Enter story title" required>
+                        <input type="number" name="user_id" value="{{ auth()->user()->id }}">
                     </div>
 
                     <div class="mb-3">

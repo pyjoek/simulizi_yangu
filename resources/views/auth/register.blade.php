@@ -40,11 +40,26 @@
         </div>
 
         <!-- Profile Picture -->
-        <div class="mt-4">
+        <div class="mt-4 form-selection">
             <x-input-label for="profile_picture" :value="__('Profile Picture')" />
             <input id="profile_picture" class="block mt-1 w-full" type="file" name="prof" accept="image/*" />
             <x-input-error :messages="$errors->get('profile_picture')" class="mt-2" />
         </div>
+
+        <!-- <div class="mt-4">
+            <x-input-label for="profile_picture" :value="__('Profile Picture')" />
+            
+            <!-- Custom File Input with Tailwind CSS -->
+            <div class="flex items-center justify-center w-full">
+                <label for="profile_picture" class="inline-block py-2 px-4 cursor-pointer bg-indigo-600 text-white rounded-md text-sm hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500">
+                    Choose File
+                </label>
+                <input id="profile_picture" class="hidden" type="file" name="prof" accept="image/*" />
+            </div>
+            
+            <x-input-error :messages="$errors->get('profile_picture')" class="mt-2" />
+        </div>   -->
+
 
         <div class="flex items-center justify-end mt-4">
             <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">

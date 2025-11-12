@@ -1,5 +1,13 @@
 @extends('layouts.app')
 
+@section('button')
+<div>
+    <a href="/profile/show" class="btn border ml-3 mb-3">
+        <i class="bi bi-person"></i> <!-- Bootstrap Profile Icon -->
+    </a>
+</div>
+@endsection
+
 @section('content')
 <div class="container my-5">
     <article class="bg-white p-5 rounded shadow-sm mx-auto" style="max-width: 800px; line-height: 1.8; font-family: 'Georgia', serif;">

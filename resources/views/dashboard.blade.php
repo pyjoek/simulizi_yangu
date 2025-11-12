@@ -18,9 +18,17 @@
                 @if ($story->category == $category)
                     <div class="col-lg-6 my-4">
                         <div class="story bg-white rounded shadow p-4">
-                            <h2 class="mb-3">{{ $story->title }}</h2>
-                            <p>{{ $story->content }}</p>
-                            <img src="{{ asset('storage/'.$story->image) }}" alt="Story Image" class="img-fluid rounded mt-3">
+                            <a href="/story/{{$story->id}}">
+                                <h2 class="mb-3">{{ $story->title }}</h2>
+                            </a>
+                            <textarea style="width: 100%; height: 90%; border: none; resize: none;">
+                                {{ $story->content }}
+                            </textarea>
+                            <img src="{{ asset('storage/'.$story->image) }}" 
+                                alt="Story Image" 
+                                class="img-fluid rounded mt-3"
+                                style="width: 300px; height: 200px; object-fit: contain;">
+                            <!-- <img src="{{ asset('storage/'.$story->image) }}" alt="Story Image" class="img-fluid rounded mt-3"> -->
                         </div>
                     </div>
                 @endif

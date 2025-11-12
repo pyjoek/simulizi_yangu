@@ -16,7 +16,7 @@
                 @if ($story->category == $category)
                     <div class="col-lg-6 my-4">
                         <div class="story bg-white rounded shadow p-4">
-                            <a href="/story/{{$story->id}}">
+                            <a href="/story/{{$story->id}}" style="text-decoration: none; color: black">
                                 <h2 class="mb-3">{{ $story->title }}</h2>
                             </a>
                             <textarea style="width: 100%; height: 90%; border: none; resize: none;">

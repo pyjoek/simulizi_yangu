@@ -30,7 +30,7 @@ class StoryController extends Controller
                 'user_id' => $request->user_id
             ]);
 
-            return redirect('/')
+            return redirect()->back()
                 ->with('success', 'Story created successfully!');
     }
 
